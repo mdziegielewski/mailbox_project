@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add phone number</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/add_phone.css' %}"/>
+</head>
+<body>
+    <form method="post" class="center">
+        <br><br><br>
+        <input type="number" name="phone_number" placeholder="Nr telefonu">
+        <select name="phone_type">
+            <option value="1">domowy</option>
+            <option value="2">służbowy</option>
+            <option value="3">prywatny</option>
+        </select>
+
+        <button type="submit">Dodaj</button><br><br><br>
+
+        <div class="center">
+            <a href="/main/" class="button">Powrót na stronę główną</a>
+        </div>
+        {% csrf_token %}
+    </form>
+</body>
+</html>

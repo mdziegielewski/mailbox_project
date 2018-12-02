@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Searched people</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/searched_people.css' %}"/>
+</head>
+    <body>
+        <table>
+            {% for counter in group_person %}
+            <tr>
+                <td>Imię: {{counter.name}}</td>
+                <td>Nazwisko: {{counter.surname}}</td>
+                <td>Opis: {{counter.description}}</td><br><br>
+            </tr>
+            {% endfor %}
+        </table><br><br>
+
+        <a href="/main/" class="button">Powrót na stronę główną</a>
+    </body>
+</html>

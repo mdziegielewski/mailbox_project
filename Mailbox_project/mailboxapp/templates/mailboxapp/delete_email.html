@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete email address</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/delete_email.css' %}"/>
+</head>
+    <body>
+        <h3>Czy na pewno chcesz usunąć?</h3><br>
+        <form method="post">
+            <select name="email_addresses">
+                {% for counter in person_email_all %}
+                    <option value={{counter.id}}> Email: {{counter.email_address}} Typ: {{counter.get_email_type_display}}</option>
+                {% endfor %}
+            </select>
+
+            <button type="submit" name="decision" value="yes">Tak</button>
+            <button type="submit" name="decision" value="no">Nie</button>
+            {% csrf_token %}
+        </form>
+    </body>
+</html>

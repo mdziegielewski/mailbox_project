@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Show person</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}"/>
+
+</head>
+    <body>
+        <div class="background">
+            <div class="text_center">
+                <h1>Moja książka adresowa</h1>
+            </div>
+            <table class="center">
+                {% for element in person %}
+                    <tr>
+                        <td>{{element.name}}</td>
+                        <td>{{element.surname}}</td>
+                        <td><a href="/main/show/{{ element.id }}" class="button" >Szczegóły</a></td>
+                        <td><a href="/main/modify/{{ element.id }}" class="button">Edytuj</a></td>
+                        <td><a href="/main/delete/{{ element.id }}" class="button">Usuń</a></td>
+                    </tr>
+                {% endfor %}
+            </table><br>
+        </div>
+    <div class="text_center">
+        <a href="/main/newgroups/" class="button">Dodaj nową grupę</a>
+        <a href="/main/delete/groups/" class="button">Usuń grupę</a>
+        <a href="/main/new/" class="button">Dodaj nową osobę</a><br><br><br>
+        <a href="/main/search/" class="button">Szukaj w grupie</a>
+    </div><br><br>
+
+    <div class="text_center">
+        <img class="image" src="https://image.flaticon.com/icons/png/128/167/167755.png" alt="books">
+    </div>
+
+    </body>
+</html>

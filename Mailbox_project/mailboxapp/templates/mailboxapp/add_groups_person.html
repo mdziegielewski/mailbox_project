@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Person to group</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/add_groups_person.css' %}"/>
+</head>
+    <body> <br><br><br>
+        <form method="post" class="center">
+
+            Imię: {{person.name}} <br>
+            Nazwisko: {{person.surname}} <br>
+            Opis: {{person.description}} <br><br>
+
+            <select name="group_name_list">
+                {% for counter in groups_all %}
+                    <option value={{counter.id}}> Nazwa={{counter.group_name}} </option>
+                {% endfor %}
+            </select><br><br>
+
+            <button type="submit">Dodaj</button>
+            {% csrf_token %}
+        </form><br><br><br>
+
+        <div class="center">
+            <a href="/main/" class="button">Powrót na stronę główną</a>
+        </div>
+
+    </body>
+</html>

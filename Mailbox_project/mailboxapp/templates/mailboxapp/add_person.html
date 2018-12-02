@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add person</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/add_address.css' %}"/>
+</head>
+    <body><br><br><br>
+        <form method="post" class="center">
+            <input type="text" name="name" placeholder="Imię" required><br>
+            <input type="text" name="surname" placeholder="Nazwisko" required><br>
+            <input type="text" name="description" placeholder="Opis"><br>
+            <button type="submit">Dodaj</button>
+            {% csrf_token %}
+        </form>
+        <br><br>
+        <div class="center">
+            <a href="/main/" class="button">Powrót na stronę główną</a>
+        </div>
+    </body>
+</html>

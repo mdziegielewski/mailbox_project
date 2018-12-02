@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete person</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/add_address.css' %}"/>
+</head>
+    <body>
+        <h3>Czy na pewno chcesz usunąć?</h3>
+            Imię:{{person.name}}<br>
+            Nazwisko:{{person.surname}}<br>
+            Opis:{{person.description}}<br><br>
+
+        <form method="post">
+            <button type="submit" name="decision" value="yes">Tak</button>
+            <button type="submit" name="decision" value="no">Nie</button>
+            {% csrf_token %}
+        </form>
+    </body>
+</html>

@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete person from group</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/delete_person_from_group.css' %}"/>
+</head>
+    <body>
+        <h3>Czy na pewno chcesz usunąć?</h3><br>
+            <form method="post">
+                <select name="person_from_group">
+                    {% for counter in person_groups_all %}
+                        <option value={{counter.id}}>Grupa: {{counter.group_name}}</option>
+                    {% endfor %}
+                </select>
+
+                <button type="submit" name="decision" value="yes">Tak</button>
+                <button type="submit" name="decision" value="no">Nie</button>
+                {% csrf_token %}
+            </form>
+    </body>
+</html>

@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add email address</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/add_address.css' %}"/>
+</head>
+    <body><br><br><br>
+        <form method="post" class="center">
+            <input type="email" name="email_address" placeholder="Adres email" pattern="^.+[@].+[\.].+">
+            <select name="email_type">
+                <option value="1">prywatny</option>
+                <option value="2">służbowy</option>
+            </select>
+            <button type="submit">Dodaj</button>
+            {% csrf_token %}
+        </form><br><br><br>
+
+        <div class="center">
+            <a href="/main/" class="button">Powrót na stronę główną</a>
+        </div>
+
+    </body>
+</html>

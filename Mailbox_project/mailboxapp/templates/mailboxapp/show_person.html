@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Show person</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/show_person.css' %}"/>
+    </head>
+
+    <body>
+        <div class="text">
+            Imię: {{person.name}}<br>
+            Nazwisko: {{person.surname}}<br>
+            Opis: {{person.description}}<br>
+        </div>
+        <div>
+            <ol><h4>Adres:</h4>
+                {% for counter in person_address %}
+                    <li> Miasto: {{counter.city}} Ulica: {{counter.street}}
+                        Numer budynku: {{counter.house_number}} Numer mieszkania: {{counter.flat_number}} </li>
+                {% endfor %}
+            </ol>
+
+            <ol><h4>Telefon:</h4>
+                {% for counter in person_phone %}
+                    <li> Numer telefonu: {{counter.phone_number}} Rodzaj numeru: {{counter.get_phone_type_display}} </li>
+                {% endfor %}
+            </ol>
+
+            <ol><h4>Email:</h4>
+                {% for counter in person_email %}
+                    <li> Adres email: {{counter.email_address}} Rodzaj: {{counter.get_email_type_display}} </li>
+                {% endfor %}
+            </ol>
+
+             <ol><h4>Grupy:</h4>
+                {% for counter in person_groups %}
+                    <li> Grupa: {{counter.group_name}}</li>
+                {% endfor %}
+            </ol>
+        </div>
+        <br><br>
+        <a href="/main/" class="button">Powrót na stronę główną</a>
+
+    </body>
+</html>

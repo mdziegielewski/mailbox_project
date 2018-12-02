@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit person</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/edit_person.css' %}"/>
+</head>
+<body>
+    <form method="post" class="center">
+        Imię: <input type="text" name="name" value="{{person.name}}"><br>
+        Nazwisko: <input type="text" name="surname" value="{{person.surname}}"><br>
+        Opis: <input type="text" name="description" value="{{person.description}}">
+        <br><br><br>
+
+        <table>Adres
+            <a href="/main/addaddress/{{person.id}}" class="button">Dodaj</a> / <a href="/main/delete/address/{{person.id}}" class="button">Usuń</a>
+            {% for counter in address %}
+            <tr>
+                <td>Miasto: {{counter.city}}</td>
+                <td>Ulica: {{counter.street}}</td>
+                <td>Nr domu: {{counter.house_number}}/{{counter.flat_number}}</td>
+            </tr>
+            {% endfor %}
+        </table><br>
+
+        <table>Telefon:
+            <a href="/main/addpphone/{{person.id}}" class="button">Dodaj</a> / <a href="/main/delete/phone/{{person.id}}" class="button">Usuń</a>
+            {% for counter in phone %}
+            <tr>
+                <td> Nr telefonu: {{counter.phone_number}}</td>
+                <td> Typ: {{counter.get_phone_type_display}}</td>
+            </tr>
+            {% endfor %}
+        </table><br>
+
+        <table>Email:
+            <a href="/main/addemail/{{person.id}}" class="button">Dodaj</a> / <a href="/main/delete/email/{{person.id}}" class="button">Usuń</a>
+            {% for counter in email %}
+            <tr>
+                <td>Email: {{counter.email_address}}</td>
+                <td>Typ: {{counter.get_email_type_display}}</td>
+            </tr>
+            {% endfor %}
+        </table><br>
+
+        <table>Grupy:
+            <a href="/main/linkperosontogroup/{{person.id}}" class="button">Dodaj</a> / <a href="/main/delete/personfromgroup/{{person.id}}" class="button">Usuń</a>
+            {% for counter in groups %}
+            <tr>
+                <td>Nazwa: {{counter.group_name}}</td>
+            </tr>
+            {% endfor %}
+        </table><br>
+
+
+        <br><button type="submit">Zatwierdź zmiany</button><br><br>
+        <a href="/main/" class="button">Powrót na stronę główną</a>
+        {% csrf_token %}
+    </form>
+</body>
+</html>
